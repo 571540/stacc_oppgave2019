@@ -1,16 +1,26 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html>
   <head>
     <meta charset="utf-8">
-    <title>Hent prosjektplan</title>
+    <title id="title">Hent nedbetalingsplan</title>
     <link rel="stylesheet" href="css/styles.css">
   </head>
   <body>
     <header>
-      <h1>JSON fil</h1>
-      <button id=btn>Hent fil</button>
+      <h1>Nedbetalingsplan</h1>
+      <button id="btn">Hent fil</button>
     </header>
-    <div id="prosjekt-info"></div>
-    <script src="js/ajax.js"></script>
+    <script src="js/json.js"></script>
+    <!-- Rader med data blir lagt til gjennom ajax.js -->
+    <table id="table">
+      <tr>
+        <th>Restgjeld</th>
+        <th>Dato</th>
+        <th>Innbetaling</th>
+        <th>Gebyr</th>
+        <th>Renter</th>
+        <th>Total</th>
+      </tr>
+    </table>
   </body>
 </html>
