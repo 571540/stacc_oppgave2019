@@ -1,5 +1,7 @@
-// Bruker eksempelet som kom med i oppgaven
-var payload = {
+let btn = document.getElementById("btn");
+
+//Eksempelet som kom med i oppgaven
+let payload = {
   "laanebelop": 2000000,
   "nominellRente": 3,
   "terminGebyr":30,
@@ -9,11 +11,15 @@ var payload = {
   "ukjentVerdi":"TERMINBELOP"
 };
 
-// Når man trykker på "hent fil"-knappen så blir nedbetalingsplanen vist på siden
-var btn = document.getElementById("btn");
-
+//Får ut nedlastingsplan ved å trykke på knappen
 btn.addEventListener("click", function(){
   var jsonFile = JSON.stringify(payload);
+  postRequest(jsonFile);
+});
+
+
+//Funksjon for å sende POST-request til API
+function postRequest(json){
   var xhr = new XMLHttpRequest();
   var url = "https://visningsrom.stacc.com/dd_server_laaneberegning/rest/laaneberegning/v1/nedbetalingsplan";
   
@@ -28,8 +34,8 @@ btn.addEventListener("click", function(){
       console.error(xhr.statusText);
     };
   };
-  xhr.send(jsonFile);
-});
+  xhr.send(json);
+};
 
 //Funksjon for å formatere JSON-data til HTML i en tabell
 function htmlTable(data){
